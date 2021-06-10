@@ -2,7 +2,10 @@
 
 {% block content %}
 <h1>{{ poll.subject }}</h1>
+
 <p>建立日期：{{ poll.date_created }}</p>
+| <a href="/poll/{{ poll.id }}/edit/">編輯</a>
+| <a href="/poll/{{ poll.id }}/delete/">刪除</a>
 <p>{{ poll.desc }}</p>
 
 <ul>
