@@ -44,3 +44,30 @@ class PollEdit(UpdateView):
 class PollDelete(DeleteView):
     model = Poll
     success_url = '/poll/'
+
+class OptionCreate(CreateView):
+    model = Option
+    fields = ['title']
+    template_name = 'default/poll_form.html'
+
+    def form_valid(self, form):
+        form.instance.poll_id = self.kwargs['pk']
+        return super().form_valid
+    
+    def get_success_url(self):
+        return "/poll/{}/".format(self.object.poll_id)
+        
+class OptionEdit(UpdateView):
+    model = Option
+    fields = ['title']
+    pk_url_kwarg = "oid"
+    template_name = 'default/poll_form.html'
+    def get_success_url(self):
+        return "poll/{}/".format(self.object.poll_id)
+
+class OptionDelete(DeleteView):
+    model = Option
+    pk_url_kwarg = "oid"
+
+    def get_success_url(self):
+        return "poll/{}/".format(self.object.poll_id)

@@ -3,9 +3,8 @@
 {% block content %}
 
 <div>
-    確認要刪除投票主題嗎  {{ poll.subject }}  嗎？
+    確認要刪除嗎  {{ poll.subject }}  嗎？
 
-    <p>{{ poll.desc }}</p>
 </div>
 <form action="" method="POST">
     {% csrf_token %}
